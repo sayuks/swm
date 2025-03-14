@@ -30,7 +30,7 @@
 #'  * This is similar to [dplyr::summarise()] but creates an additional
 #'  `.margin_name` category for each grouping variable. It assumes a hierarchy of groups
 #'   and the higher level groups should be provided first.
-#'  * Regular groups, not used for totals/subtotals can be provided through the `.without_all` arg
+#'  * Regular groups, not used for totals/subtotals can be provided through the `.without_all` argument
 #'   and will be used as parent groups.
 #'  * If you want to create its own total margin (such as `"(all)"`)
 #'   for a variable that is a regular group and has no hierarchy, specify it with `.with_all`.
@@ -75,7 +75,7 @@
 #'                * Just keeps the original level of factor.
 #'              `<NA>` is not included in the level.
 #'              This is consistent with the default
-#'              [base::factor()] behaviour (`exclude = NA`).
+#'              [base::factor()] behavior (`exclude = NA`).
 #'
 #' @references
 #'  * Main idea is borrowed from \href{https://gist.github.com/moodymudskipper/6347418d82fea2160178422aa574dec2}{here}.
@@ -319,6 +319,7 @@ assert_column_intersect <- function(lst) {
 #' Assert whether margin_name is included in each column element
 #' @param data A data frame (lazy or not)
 #' @param margin_name A character vector of length 1. `NA_character_` is allowed.
+#' @importFrom rlang .data
 #' @noRd
 #' @examples
 #' d <- data.frame(
@@ -438,6 +439,7 @@ get_hierarchy <- function(x) {
 }
 
 #' @inheritParams summarise_with_margin
+#' @importFrom rlang :=
 #' @param .f A function that returns data. Arguments are as follows:
 #'    * `.data`: input data
 #'    * `...`: Name-value pairs. Used with verbs such as `dplyr::summarise()` etc.

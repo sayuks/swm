@@ -125,7 +125,7 @@ as a new category.
 \item Just keeps the original level of factor.
 \verb{<NA>} is not included in the level.
 This is consistent with the default
-\code{\link[base:factor]{base::factor()}} behaviour (\code{exclude = NA}).
+\code{\link[base:factor]{base::factor()}} behavior (\code{exclude = NA}).
 }
 }
 }
@@ -145,7 +145,7 @@ See below for more details
 \item This is similar to \code{\link[dplyr:summarise]{dplyr::summarise()}} but creates an additional
 \code{.margin_name} category for each grouping variable. It assumes a hierarchy of groups
 and the higher level groups should be provided first.
-\item Regular groups, not used for totals/subtotals can be provided through the \code{.without_all} arg
+\item Regular groups, not used for totals/subtotals can be provided through the \code{.without_all} argument
 and will be used as parent groups.
 \item If you want to create its own total margin (such as \code{"(all)"})
 for a variable that is a regular group and has no hierarchy, specify it with \code{.with_all}.

@@ -4,6 +4,10 @@
 # swm
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/sayuks/swm/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/sayuks/swm/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/sayuks/swm/graph/badge.svg)](https://app.codecov.io/gh/sayuks/swm)
 <!-- badges: end -->
 
 The goal of swm is to …
