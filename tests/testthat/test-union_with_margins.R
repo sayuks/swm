@@ -1,4 +1,4 @@
-test_that("union_all_with_margins() works correctly with local data and lazy tables", {
+test_that("union_all_with_margins() works with local data and lazy tables", {
   run_test <- function(lazy) {
     roster <- get_roster_dummy()
 

@@ -141,7 +141,13 @@
 #'   .without_all = am,
 #'   .with_all = gear
 #' )
-summarise_with_margins <- function(.data, ..., .margins = NULL, .without_all = NULL, .with_all = NULL, .margin_name = "(all)", .sort = is.data.frame(.data)) {
+summarise_with_margins <- function(.data,
+                                   ...,
+                                   .margins = NULL,
+                                   .without_all = NULL,
+                                   .with_all = NULL,
+                                   .margin_name = "(all)",
+                                   .sort = is.data.frame(.data)) {
   .f <- function(.data, ..., .margin_pairs, .by) {
     dplyr::summarise(.data, ..., !!!.margin_pairs, .by = tidyselect::all_of(.by))
   }
@@ -160,9 +166,14 @@ summarise_with_margins <- function(.data, ..., .margins = NULL, .without_all = N
 
 #' @export
 #' @rdname summarise_with_margins
-union_all_with_margins <- function(.data, .margins = NULL, .without_all = NULL, .with_all = NULL, .margin_name = "(all)", .sort = FALSE) {
+union_all_with_margins <- function(.data,
+                                   .margins = NULL,
+                                   .without_all = NULL,
+                                   .with_all = NULL,
+                                   .margin_name = "(all)",
+                                   .sort = FALSE) {
   .f <- function(.data, ..., .margin_pairs, .by) {
-      dplyr::mutate(.data, !!!.margin_pairs)
+    dplyr::mutate(.data, !!!.margin_pairs)
   }
 
   with_margins(
@@ -179,7 +190,14 @@ union_all_with_margins <- function(.data, .margins = NULL, .without_all = NULL, 
 
 #' @export
 #' @rdname summarise_with_margins
-nest_with_margins <- function(.data, .margins = NULL, .without_all = NULL, .with_all = NULL, .margin_name = "(all)", .sort = TRUE, .key = NULL, .names_sep = NULL) {
+nest_with_margins <- function(.data,
+                              .margins = NULL,
+                              .without_all = NULL,
+                              .with_all = NULL,
+                              .margin_name = "(all)",
+                              .sort = TRUE,
+                              .key = NULL,
+                              .names_sep = NULL) {
   stopifnot(
     # As of the end of 2023, lazy tables often do not support tidyr::nest()
     ".data must be a data frame (not lazy)" =
@@ -214,7 +232,14 @@ nest_with_margins <- function(.data, .margins = NULL, .without_all = NULL, .with
 
 #' @export
 #' @rdname summarise_with_margins
-nest_by_with_margins <- function(.data, .margins = NULL, .without_all = NULL, .with_all = NULL, .margin_name = "(all)", .sort = TRUE, .key = "data", .keep = FALSE) {
+nest_by_with_margins <- function(.data,
+                                 .margins = NULL,
+                                 .without_all = NULL,
+                                 .with_all = NULL,
+                                 .margin_name = "(all)",
+                                 .sort = TRUE,
+                                 .key = "data",
+                                 .keep = FALSE) {
   stopifnot(
     # As of the end of 2023, lazy tables often do not support tidyr::nest()
     ".data must be a data frame (not lazy)" =
@@ -446,12 +471,19 @@ get_hierarchy <- function(x) {
 #'    * `.margin_pairs`: Name-value pairs defining margin values.
 #'    * `.by`: grouping variables.
 #' @noRd
-with_margins <- function(.data, ..., .margins = NULL, .without_all = NULL, .with_all = NULL, .margin_name = "(all)", .f, .sort) {
+with_margins <- function(.data,
+                         ...,
+                         .margins = NULL,
+                         .without_all = NULL,
+                         .with_all = NULL,
+                         .margin_name = "(all)",
+                         .f,
+                         .sort) {
   stopifnot(
     "`.margin_name` must be a character vector of length 1." =
       is.character(.margin_name) && length(.margin_name) == 1,
     "`.f` must be a function." = is.function(.f),
-      is.character(.margin_name) && length(.margin_name) == 1,
+    is.character(.margin_name) && length(.margin_name) == 1,
     "`.sort` must be a `TRUE` or `FALSE`." =
       isTRUE(.sort) || isFALSE(.sort)
   )

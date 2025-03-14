@@ -1,14 +1,20 @@
-# We can use dbplyr::memdb_frame(roster) to create an in memory lazy table using sqlite driver, but we use duckdb.
+# nolint start: line_length_linter
+# We can use dbplyr::memdb_frame(roster) to create an in memory lazy table using
+# sqlite driver, but we use duckdb.
 # Three main reasons to use duckdb instead of sqlite:
 # * duckdb also supports in memory database.
-# * R4DS (2e) also uses duckdb in Databases section. https://r4ds.hadley.nz/databases#in-this-book
+# * R4DS (2e) also uses duckdb in Databases section.
+#   https://r4ds.hadley.nz/databases#in-this-book
 # * We use like `paste(x, collapse = "/")` in testthat,
-#   but need to replace it with `stringr::str_flatten(x, collapse = "/")` in the context of dbplyr in lazy table.
+#   but need to replace it with `stringr::str_flatten(x, collapse = "/")`
+#   in the context of dbplyr in lazy table.
 #   str_flatten() is not supported in sqlite, but it is supported in duckdb.
-# The disadvantage of using duckdb is that the order of the rows in the result of aggregate functions is different each time.
-#   https://duckdb.org/docs/sql/aggregates.html#order-by-clause-in-aggregate-functions
-# Therefore, when testing a lazy table, check whether the data are equal, ignoring the order of the rows.
-
+# The disadvantage of using duckdb is that the order of the rows in the result
+# of aggregate functions is different each time.
+# https://duckdb.org/docs/sql/aggregates.html#order-by-clause-in-aggregate-functions
+# Therefore, when testing a lazy table, check whether the data are equal,
+# ignoring the order of the rows.
+# nolint end
 test_that(".margin works correctly with local data frame and lazy table", {
   run_test <- function(lazy) {
     roster <- get_roster_dummy()
