@@ -24,7 +24,7 @@ that make grouped operations with margins easier.
 First, load the required libraries.
 
 ```{r setup}
-library(jprep.datasets)
+library(swm)
 library(tidyverse)
 ```
 
