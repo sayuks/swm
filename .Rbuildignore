@@ -5,8 +5,6 @@
 ^README\.Rmd$
 ^dev$
 ^\.github$
-^_pkgdown\.yml$
 ^docs$
-^pkgdown$
-^doc$
-^Meta$
+^altdoc$
+^_quarto$

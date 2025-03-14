@@ -16,6 +16,7 @@ Imports:
     tidyselect,
     utils
 Suggests: 
+    altdoc,
     DBI,
     dbplyr,
     duckdb,

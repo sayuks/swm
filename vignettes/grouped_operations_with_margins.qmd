@@ -1,18 +1,14 @@
 ---
 title: Grouped operations with margins
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{grouped_operations_with_margins}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+format:
+  html:
+    code-tools: true
+    embed-resources: true
+    toc: true
+    toc-expand: true
+    number-sections: true
+date: last-modified
 ---
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
 
 This article introduces the following functions 
 that make grouped operations with margins easier.
@@ -28,7 +24,7 @@ that make grouped operations with margins easier.
 First, load the required libraries.
 
 ```{r setup}
-library(swm)
+library(jprep.datasets)
 library(tidyverse)
 ```
 
@@ -419,10 +415,10 @@ See the followings for more information.
 
 <!-- ### Example -->
 
-<!-- Here, using `jprep.datasets::tabset_quarto()` together, -->
+<!-- Here, using `quartabs::render_tabset()` together, -->
 <!-- create figures for each group and -->
 <!-- show them using the nested tabset panels. -->
-<!-- `tabset_quarto()` works with quarto documents (.qmd files). -->
+<!-- `render_tabset()` works with quarto documents (.qmd files). -->
 <!-- You need to specify `#| results: asis` in the chunk option. -->
 
 <!-- :::{.callout-tip} -->
