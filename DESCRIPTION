@@ -19,6 +19,7 @@ Suggests:
     DBI,
     dbplyr,
     duckdb,
+    ggplot2,
     quartabs,
     quarto,
     sessioninfo,

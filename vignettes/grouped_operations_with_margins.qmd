@@ -26,6 +26,7 @@ First, load the required libraries.
 ```{r setup}
 library(swm)
 library(dplyr)
+library(ggplot2)
 library(tibble)
 library(purrr)
 library(quartabs)
