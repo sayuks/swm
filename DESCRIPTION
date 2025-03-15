@@ -11,7 +11,6 @@ Imports:
     dplyr (>= 1.0.0),
     purrr,
     rlang,
-    stats,
     tidyr,
     tidyselect,
     utils
@@ -20,16 +19,15 @@ Suggests:
     DBI,
     dbplyr,
     duckdb,
-    knitr,
-    rmarkdown,
+    quartabs,
+    quarto,
+    sessioninfo,
     spelling,
     stringr,
     testthat (>= 3.0.0),
-    tibble,
-    tidyverse
+    tibble
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-VignetteBuilder: knitr

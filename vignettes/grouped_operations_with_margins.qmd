@@ -25,7 +25,10 @@ First, load the required libraries.
 
 ```{r setup}
 library(swm)
-library(tidyverse)
+library(dplyr)
+library(tibble)
+library(purrr)
+library(quartabs)
 ```
 
 Prepare dummy data.
@@ -413,47 +416,54 @@ See the followings for more information.
 
 - [Row-wise operations - `{dplyr}` vignette](https://dplyr.tidyverse.org/articles/rowwise.html)
 
-<!-- ### Example -->
+### Example
 
-<!-- Here, using `quartabs::render_tabset()` together, -->
-<!-- create figures for each group and -->
-<!-- show them using the nested tabset panels. -->
-<!-- `render_tabset()` works with quarto documents (.qmd files). -->
-<!-- You need to specify `#| results: asis` in the chunk option. -->
+Here, using `quartabs::render_tabset()` together,
+create figures for each group and
+show them using the nested tabset panels.
+`render_tabset()` works with quarto documents (.qmd files).
+You need to specify `#| results: asis` in the chunk option.
 
-<!-- :::{.callout-tip} -->
-<!-- For details on `tabset_quarto()`,  -->
-<!-- see [here](http://10.13.123.231:3838/team_package/demo/demo_tabset_quarto.html). -->
-<!-- ::: -->
-
-<!-- ```{r} -->
-<!-- #| results: asis -->
-
-<!-- df1 |>  -->
-<!--   nest_by_with_margins( -->
-<!--     .margins = c(cat, subcat), -->
-<!--     .with_all = c(g1, g2) -->
-<!--   ) |>  -->
-<!--   mutate( -->
-<!--     fig = list( -->
-<!--       data |>  -->
-<!--         ggplot(aes(factor(year), value, fill = id)) +  -->
-<!--         geom_col() + -->
-<!--         labs( -->
-<!--           title = str_glue("{cat} | {subcat} | {g1} | {g2}") -->
-<!--         ) -->
-<!--     ) -->
-<!--   ) |>  -->
-<!--   tabset_quarto(c(cat, subcat, g1, g2), fig) -->
-<!-- ``` -->
-
-<!-- Hope this helps in your analysis! -->
-
-<details><summary>Session Info</summary>
+:::{.callout-tip}
+For details on `render_tabset()`,
+see [Get started](https://sayuks.github.io/quartabs/vignettes/get_started.html).
+:::
 
 ```{r}
-sessionInfo()
+#| results: asis
+
+df1 |>
+  nest_by_with_margins(
+    .margins = c(cat, subcat),
+    .with_all = c(g1, g2)
+  ) |>
+  mutate(
+    fig = list(
+      data |>
+        ggplot(aes(factor(year), value, fill = id)) +
+        geom_col() +
+        labs(
+          title = paste(cat, subcat, g1, g2, sep = " | ")
+        )
+    )
+  ) |>
+  render_tabset(c(cat, subcat, g1, g2), fig)
 ```
 
-</details>
+## Session Info
 
+```{r}
+#| warning: false
+# save the session info as an object
+sess <- sessioninfo::session_info(pkgs = "attached")
+
+# inject the Quarto info
+sess$platform$quarto <- paste(
+  quarto::quarto_version(),
+  "@",
+  normalizePath(quarto::quarto_path())
+)
+
+# print it out
+sess
+```

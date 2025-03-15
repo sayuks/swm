@@ -574,7 +574,8 @@ with_margins <- function(.data,
     l_group_vars,
     function(group_vars) {
       margins <- setdiff(margin_vars_all, group_vars)
-      margin_pairs <- stats::setNames(rep(.margin_name, length(margins)), margins)
+      margin_pairs <- rep(.margin_name, length(margins))
+      names(margin_pairs) <- margins
 
       # apply the specific function
       .f(.data = .data, ..., .margin_pairs = margin_pairs, .by = group_vars)

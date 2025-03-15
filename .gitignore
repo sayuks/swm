@@ -47,10 +47,6 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
-docs
-inst/doc
-/doc/
-/Meta/
 altdoc/freeze.rds
 _quarto/*
 !_quarto/_freeze/
